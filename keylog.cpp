@@ -1,4 +1,4 @@
-// Copyright 漏 2014 Brook Hong. All Rights Reserved.
+// Copyright © 2014 Brook Hong. All Rights Reserved.
 //
 
 #include <stdio.h>
@@ -12,10 +12,10 @@ struct Key {
     LPCWSTR label;
 };
 struct Key specialKeys[] = {
-    {0x08, L"Backspace"},                 // back
+    {0x08, L"退格"},                 // back
     {0x09, L"Tab"},
     {0x0C, L"Clear"},
-    {0x0D, L"Enter"},              // enter
+    {0x0D, L"回车"},              // enter
     {0x10, L"Shift"},
     {0x11, L"Control"},
     {0x12, L"Menu"},
@@ -135,31 +135,31 @@ struct Key specialKeys[] = {
 size_t nSpecialKeys = sizeof(specialKeys) / sizeof(Key);
 
 LPCWSTR mouseActions[] = {
-    L"MouseMove",
-    L"LButtonDown",
-    L"LButtonUp",
-    L"LButtonDBLCLK",
-    L"RButtonDown",
-    L"RButtonUp",
-    L"RButtonDBLCLK",
-    L"MButtonDown",
-    L"MButtonUp",
-    L"MButtonDBLCLK",
-    L"MouseWheel",
+    L"鼠标移动",
+    L"左键按下",
+    L"左键松开",
+    L"左键双击",
+    L"右键按下",
+    L"右键松开",
+    L"右键双击",
+    L"滚轮按下",
+    L"滚轮松开",
+    L"滚轮双击",
+    L"滚轮",
     L"XButtonDown",
     L"XButtonUp",
     L"XButtonDBLCLK",
     L"MouseHWheel"
 };
 LPCWSTR mouseClicks[] = {
-    L"LClick",
-    L"RClick",
-    L"MClick"
+    L"左击",
+    L"右击",
+    L"滚轮"
 };
 LPCWSTR mouseDblClicks[] = {
-    L"LDblClick",
-    L"RDblClick",
-    L"MDblClick"
+    L"左键双击",
+    L"右键双击",
+    L"滚轮双击"
 };
 
 size_t nMouseActions = sizeof(mouseActions) / sizeof(LPCWSTR);
@@ -395,7 +395,7 @@ LRESULT CALLBACK LLMouseProc(int nCode, WPARAM wp, LPARAM lp)
 
         if (!(ms->flags & LLMHF_INJECTED)) {
             if(idx == 10) {
-                swprintf(c, 64, (int)(ms->mouseData) > 0 ? L"%sUp" : L"%sDown", mouseActions[idx]);
+                swprintf(c, 64, (int)(ms->mouseData) > 0 ? L"%s往上" : L"%s往下", mouseActions[idx]);
             } else if(mergeMouseActions) {
                 switch (idx) {
                     case 1:
